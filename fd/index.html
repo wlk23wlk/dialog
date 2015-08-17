@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html>
+	<head>
+	<link href="base.css" rel="stylesheet" />
+	</head>
+	<body>
+    <div class="aaa" style="cursor:pointer;">打开</div>
+	<script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="dialog.js"></script>
+	<script type="text/javascript">
+		/*$.fD([option][flag]);//默认载入一个弹窗 载入多个 弹窗需要flag标记$.fD("111"),$.fD("222")*/
+		//$.fD("11");
+		//$.fDOpen("11");//对应标记弹窗显示
+		//$.fD("22");
+		//$.fDOpen("22");//对应标记弹窗显示
+		/*
+		$.fD({
+			_dom:{//配置DOM节点[元素，css,内容] 以>区分节点插入位置 没有>为弹窗最外层
+				"box":["div",".dialog",""],//BOX弹窗最外层 
+				"prompt":["h2",".dialog>''","提示："],//prompt提示
+				"close":["span","h2>.close","X"]//close 关闭按钮
+			},
+			//设置元素CSS样式 与dom相对应
+			_css:{
+				".dialog":{
+					WebkitBorderRadius:"3px",
+					display:"none",
+					width:"350px",
+					minHeight:"100px",
+					position:"absolute",
+					left:"50%",
+					top:"50%",
+					marginLeft:"-150px",
+					marginTop:"-50px",
+					backgroundColor:"#fff",
+					border:"1px solid #000",
+					overflow:"hidden",
+					zIndex:100000
+				},
+				"span":{
+					display:"inline-block",
+					width:"20px",
+					height:"20px",
+					fontSize:"14px",
+					lineHeight:"20px",
+					textAlign:"center",
+					float: "right",
+					margin: "5px",
+					marginRight:"10px",
+					fontFamily: "cursive",
+					cursor:"pointer"
+				},
+				"h2":{
+					position:"relative",
+					height:"32px",
+					marginBottom:"10px",
+					backgroundColor:"#5092cf",
+					lineHeight:"32px",
+					textAlign:"center",
+					color:"#fff",
+					fontWeight:"bold",
+					fontSize:"16px",
+					textAlign:"left",
+					textIndent:"10px"
+				},
+				"p":{
+					fontSize:"14px"
+				}
+			},
+			drag:true,//是否可拖拽
+			mask:true,//是否创建遮罩层
+			position:true//是否自动居中定位
+		},"11");
+		*/
+		//$.fD_text("111","aaa",1);//【提示信息，唯一标记,弹出次数】
+		//$.fDClose();
+		$(document).on("click",".close",function(){
+			$.fD_confirm_close("aaaa");//对应标记 弹窗关闭
+		});
+        // $.fD_confirm(message提示信息,flag唯一标记,fn弹窗弹出前执行函数，确认取消绑定)
+        var obj=1111111111;
+       $(".aaa").click(function(){
+            $.fD_confirm("展示","aaaa",
+            function(obj){alert(obj);},
+            {
+                sure:function(){
+                    alert(1);
+                    $.fD_confirm_close("aaaa");
+                },
+                cancel:function(){
+                     alert(2);
+                     $.fD_confirm_close("aaaa");
+                }
+            });
+       });
+	</script>
+	</body>
+</html>
